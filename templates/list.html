@@ -1,0 +1,17 @@
+<ul>
+{% for task in tasks %}
+    <li>
+        {% if task.priority %} <strong> {% endif %}{{ task.content }} {% if task.priority %} </strong>{% endif %}
+        <a href="/priority/{{ task.id }}">Prioritize</a>
+        <a href="/delete/{{ task.id }}">Delete</a>
+        <form action="/update/{{ task.id}}" method="post"><input type="text" name="content"><input type="submit" value="update task"></form>
+    </li>
+{% endfor %}
+</ul>
+
+
+<form action="/task" method="post">
+    <p><input type="text" name="content"></p>
+    <input type="submit" value="Add task">
+</form>
+
